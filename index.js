@@ -28,3 +28,16 @@ app.get('/products',(rq,rs)=>{
         }
     })    
 });
+
+app.get('/products/code/:code',(rq,rs)=>{
+    rs.setHeader('content-type','application/json')
+    const code=rq.params.code
+    // fetch all products from mongo by code
+    
+    productService.byCode(code,(err,rows)=>{
+        if(err) {rs.end('Error Occured')}
+        else{
+            rs.end(JSON.stringify(rows))
+        }
+    })    
+});
