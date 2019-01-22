@@ -27,6 +27,14 @@ const findAll = (callback)=>{
         callback(err,rows)
     })
 }
+
+const findByCode = (code, callback) =>{
+    productModel.find({code :code},{code:0,_id:0},(err,rows)=>{
+           callback(err,rows)
+        })
+}
+
 module.exports ={
-    all : findAll
+    all : findAll,
+    byCode:findByCode
 }
