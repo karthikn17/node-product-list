@@ -1,8 +1,11 @@
+const request=require('request');
+const url="http://localhost:3000"
 const product=require('../services/product-services');
-describe("test",()=>{   
-    it("test it:",()=>{
-      const test1=product.all;
-       const mockTest=2;
-       expect(lengt(test1)).toBe(length(mockTest))
-    })
-})
+describe("Validate Product retreival by code",()=>{   
+    it("should return product name as Fan",()=>{
+        request.get(url+'/products/code'+'/EE', (err,res,body)=>{
+              expect(body).toBe('{"productName":"Fan"}');
+            }
+        )})
+    });
+  
